@@ -17,25 +17,32 @@ test.beforeEach('Login', async ({ page }) => {
  //loginPage.login(username1,password1)
 
 
+ // navigating to the url
  await page.goto('https://onlinelibrary.wiley.com/');
+ // click on login button
  await page.getByText('Login / Register').click();
+ // entering Username and password
  const username =await page.getByLabel('Forgot your password?').getByPlaceholder('Enter your email')
  const password =await page.getByPlaceholder('Enter your password')
  await username?.type("j.kunekanth@gmail.com");
  await password?.type("Asdzxc@123");
+ // Click on login button
  await page.click("input[name='submitButton']") 
 
 });
-
+// navigate to the search area
 test('search1', async ({ page }) => {
   await page.goto('https://onlinelibrary.wiley.com/');
+  //type "Java" in the search field
   await page.locator(searchField).pressSequentially("Java");
+  // click on search icon
   await page.locator(searchIcon).click();
 //  await expect(page.locator(JavaSearchResult)).toHaveText(JavaSearchResult,{timeout:5000});
  // https://onlinelibrary.wiley.com/action/doSearch?AllField=java 
 });
-
+// due to security issue can't able to continue seach from automation script so splitted in to second part
 test('Search2', async ({ page }) => { 
   await page.goto('https://onlinelibrary.wiley.com/action/doSearch?AllField=java');
+  //assert that search result is available
   await expect(page.locator(JavaSearchResult)).toHaveText('Ten Websites for Java',{timeout:5000});
 });
