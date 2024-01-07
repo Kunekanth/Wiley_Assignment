@@ -1,5 +1,5 @@
 import { test, chromium, Browser,expect } from '@playwright/test';
-import LoginPage from '../tests/Pages/LoginPage' ;
+import LoginPage from './Pages/LoginPage' ;
 import { Page } from '@playwright/test';
 
 
